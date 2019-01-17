@@ -5,14 +5,20 @@ const { buildSchema } = require('graphql')
 
 const schema = buildSchema(`
   type Query {
-    hello: String
+    hello: String,
+    world: String,
+    rollDice: Int
   }
 `)
 
 const root = {
   hello: () => {
     return 'Hello, World'
-  }
+  },
+  world: () => {
+    return 'World, hello'
+  },
+  rollDice: () => Math.floor(Math.random() * 6) + 1
 }
 
 const app = express()
